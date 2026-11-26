@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-11-23",
+  "notice": "Assistant-authored source drafts. No independent review, acceptance, participant response, or expert qualification is asserted. Dependencies are scoped interpretations for human checking.",
+  "records": {
+    "cf-2019-07-02-waf": {
+      "source_url": "https://blog.cloudflare.com/cloudflare-outage/",
+      "locator": "Update at 2009 UTC; response at 1409 and 1452 UTC",
+      "scope_note": "Managed-rules recovery sequence, including testing before protection was re-enabled. The final action uses the broad other-remediation category.",
+      "steps": [
+        {"action":"disable_rule","description":"Temporarily disable the WAF Managed Rulesets to relieve CPU exhaustion.","requires":[]},
+        {"action":"rollback_config","description":"Remove the offending WAF rules by reverting their change.","requires":[1]},
+        {"action":"verify_recovery","description":"Test the reverted rules to check the fix before re-enabling protection.","requires":[2]},
+        {"action":"other_remediation","description":"Re-enable the WAF Managed Rulesets after the fix has been tested.","requires":[3]}
+      ]
+    },
+    "cf-2022-06-21-bgp": {
+      "source_url":"https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/",
+      "locator":"Incident timeline, 06:58 to 07:42 UTC",
+      "scope_note":"Coarse reversal of the routing-policy change. Backup access and coordination are context, not separately scored actions.",
+      "steps":[{"action":"rollback_config","description":"Revert the routing-policy change at affected locations to restore advertised prefixes.","requires":[]}]
+    },
+    "gh-2023-04-26-packages": {
+      "source_url":"https://github.blog/2023-06-14-github-availability-report-may-2023/",
+      "locator":"April 27 08:59 UTC heading; narrative says April 26",
+      "scope_note":"Recovery action is explicit, but the incident date remains ambiguous in the source. This draft does not resolve that discrepancy.",
+      "steps":[{"action":"restart_service","description":"Manually restart the primary GitHub Packages database to clear connection errors.","requires":[]}]
+    },
+    "gh-2024-03-11-network": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-march-2024/",
+      "locator":"March 11 22:45 UTC; failed rollback in one data center",
+      "scope_note":"Scoped to completing recovery at the blocked data center. Most locations had already rolled back; do not interpret the dependency as describing every location's chronology.",
+      "steps":[
+        {"action":"repair_records","description":"Correct the configuration records missing a field that prevented rollback at the affected data center.","requires":[]},
+        {"action":"rollback_config","description":"Complete the network-configuration rollback at the previously blocked data center.","requires":[1]}
+      ]
+    },
+    "gh-2024-03-15-permissions": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-march-2024/",
+      "locator":"March 15 19:42 UTC",
+      "scope_note":"Immediate mitigation only. Subsequent development/CI configuration improvements are preventive follow-up.",
+      "steps":[{"action":"rollback_config","description":"Roll back the framework deployment that introduced incompatible database-query syntax.","requires":[]}]
+    },
+    "gh-2024-04-05-balancer": {
+      "source_url":"https://github.blog/2024-05-10-github-availability-report-april-2024/",
+      "locator":"April 05 08:11 UTC",
+      "scope_note":"The report directly attributes recovery to reverting the load-balancer change.",
+      "steps":[{"action":"rollback_config","description":"Revert the database load-balancer change responsible for connection failures.","requires":[]}]
+    },
+    "gh-2024-04-10-db-am": {
+      "source_url":"https://github.blog/2024-05-10-github-availability-report-april-2024/",
+      "locator":"April 10 narrative, 08:18 to 09:38 UTC",
+      "scope_note":"Both capacity and query changes are reported. No causal prerequisite between them is established, so neither step requires the other.",
+      "steps":[
+        {"action":"scale_capacity","description":"Increase capacity of the overloaded primary database instance.","requires":[]},
+        {"action":"optimize_query","description":"Deploy the improved query against read replicas to reduce primary-database load.","requires":[]}
+      ]
+    },
+    "gh-2024-04-10-db-pm": {
+      "source_url":"https://github.blog/2024-05-10-github-availability-report-april-2024/",
+      "locator":"Narrative 18:33 to 19:03 UTC; duplicated 08:18 heading",
+      "scope_note":"Use the evening narrative to distinguish this case. The duplicated section-heading time remains noted.",
+      "steps":[{"action":"rollback_config","description":"Roll back the compute-intensive query blocking the critical database cluster.","requires":[]}]
+    },
+    "cf-2024-06-20-loop": {
+      "source_url":"https://blog.cloudflare.com/cloudflare-incident-on-june-20-2024/",
+      "locator":"Timeline 18:34 to 19:43 UTC and Remediation and follow-up steps",
+      "scope_note":"Repeated restarts were temporary mitigation while the triggering rule was investigated and disabled. Their observed order is not proof that a restart is a causal prerequisite for disabling a rule.",
+      "steps":[
+        {"action":"restart_service","description":"Use rolling restarts of the affected service as temporary relief for stuck processes.","requires":[]},
+        {"action":"disable_rule","description":"Disable the DDoS rule responsible for triggering process poisoning.","requires":[]}
+      ]
+    },
+    "gh-2024-08-14-db-health": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-august-2024/",
+      "locator":"August 14 23:02 UTC",
+      "scope_note":"Rollback and connectivity confirmation are explicitly reported. Continued monitoring is follow-up outside this minimal recovery sequence.",
+      "steps":[
+        {"action":"rollback_config","description":"Revert the database configuration change that broke routing-service health checks.","requires":[]},
+        {"action":"verify_recovery","description":"Confirm connectivity to the databases is restored after the revert.","requires":[1]}
+      ]
+    },
+    "cf-2025-09-12-tenant": {
+      "source_url":"https://blog.cloudflare.com/deep-dive-into-cloudflares-sept-12-dashboard-and-api-outage/",
+      "locator":"Timeline 18:58 and 19:12 UTC; How we responded",
+      "scope_note":"Limited to the later Tenant Service regression. Earlier scaling and temporary rate limiting addressed other phases and are not treated as mandatory prerequisites for this rollback.",
+      "steps":[{"action":"rollback_config","description":"Revert the later Tenant Service patch that worsened API and dashboard availability.","requires":[]}]
+    },
+    "gh-2025-09-15-rate-flag": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-september-2025/",
+      "locator":"September 15 17:55 UTC",
+      "scope_note":"Immediate feature-flag reversal only; subsequent testing and monitoring changes are prevention.",
+      "steps":[{"action":"rollback_config","description":"Revert the global rate-limiter feature flag that incorrectly blocked requests.","requires":[]}]
+    },
+    "gh-2025-09-29-mcp": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-september-2025/",
+      "locator":"September 29 16:26 UTC",
+      "scope_note":"Rollback of the dependency upgrade is the reported immediate mitigation.",
+      "steps":[{"action":"rollback_config","description":"Roll back the internal dependency upgrade associated with erroneous MCP responses.","requires":[]}]
+    },
+    "gh-2025-11-28-model": {
+      "source_url":"https://github.blog/news-insights/company-news/github-availability-report-november-2025/",
+      "locator":"November 28 05:59 UTC",
+      "scope_note":"The report supports configuration reversal and does not state a required restart.",
+      "steps":[{"action":"rollback_config","description":"Revert the internal configuration change that incorrectly marked Claude Sonnet 4.5 as unavailable.","requires":[]}]
+    },
+    "cf-2025-12-05-waf": {
+      "source_url":"https://blog.cloudflare.com/5-december-2025-outage/",
+      "locator":"Timeline 09:11 change reverted, 09:12 traffic restored",
+      "scope_note":"The recorded mitigation is reversal of the problematic configuration change.",
+      "steps":[{"action":"rollback_config","description":"Revert the problematic configuration change and allow the revert to propagate.","requires":[]}]
+    }
+  }
+}

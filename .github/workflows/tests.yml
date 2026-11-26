@@ -1,0 +1,27 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m unittest discover -s tests -v
+      - run: node --check calibrated_ops/static/app.js
+      - run: node --check calibrated_ops/static/label-review.js
+      - run: node --check calibrated_ops/static/prediction-runs.js
+      - run: node --check calibrated_ops/static/diagnostics.js
+      - run: node --check calibrated_ops/static/recovery-plans.js
+      - run: node --check calibrated_ops/static/plan-lab.js
+      - run: node --check calibrated_ops/static/plan-batches.js
+      - run: node --check calibrated_ops/static/research.js
+      - run: node --check calibrated_ops/static/readiness.js
+      - run: node --check calibrated_ops/static/understanding.js

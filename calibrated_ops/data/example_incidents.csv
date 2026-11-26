@@ -1,0 +1,181 @@
+id,group_id,evidence,risk,label,split
+example-transient-00,transient,FICTIONAL CASE transient-00. A brief latency spike subsided and health checks are passing. Observation window: 1 minutes.,low,monitor,calibration
+example-transient-01,transient,FICTIONAL CASE transient-01. A brief latency spike subsided and health checks are passing. Observation window: 2 minutes.,medium,monitor,calibration
+example-transient-02,transient,FICTIONAL CASE transient-02. A brief latency spike subsided and health checks are passing. Observation window: 3 minutes.,high,monitor,calibration
+example-transient-03,transient,FICTIONAL CASE transient-03. A brief latency spike subsided and health checks are passing. Observation window: 4 minutes.,low,monitor,calibration
+example-transient-04,transient,FICTIONAL CASE transient-04. A brief latency spike subsided and health checks are passing. Observation window: 5 minutes.,medium,monitor,calibration
+example-transient-05,transient,FICTIONAL CASE transient-05. A brief latency spike subsided and health checks are passing. Observation window: 6 minutes.,high,monitor,calibration
+example-transient-06,transient,FICTIONAL CASE transient-06. A brief latency spike subsided and health checks are passing. Observation window: 7 minutes.,low,monitor,calibration
+example-transient-07,transient,FICTIONAL CASE transient-07. A brief latency spike subsided and health checks are passing. Observation window: 8 minutes.,medium,monitor,calibration
+example-transient-08,transient,FICTIONAL CASE transient-08. A brief latency spike subsided and health checks are passing. Observation window: 9 minutes.,high,monitor,calibration
+example-transient-09,transient,FICTIONAL CASE transient-09. A brief latency spike subsided and health checks are passing. Observation window: 10 minutes.,low,monitor,calibration
+example-transient-10,transient,FICTIONAL CASE transient-10. A brief latency spike subsided and health checks are passing. Observation window: 11 minutes.,medium,monitor,calibration
+example-transient-11,transient,FICTIONAL CASE transient-11. A brief latency spike subsided and health checks are passing. Observation window: 12 minutes.,high,monitor,calibration
+example-transient-12,transient,FICTIONAL CASE transient-12. A brief latency spike subsided and health checks are passing. Observation window: 13 minutes.,low,monitor,calibration
+example-transient-13,transient,FICTIONAL CASE transient-13. A brief latency spike subsided and health checks are passing. Observation window: 14 minutes.,medium,monitor,calibration
+example-transient-14,transient,FICTIONAL CASE transient-14. A brief latency spike subsided and health checks are passing. Observation window: 15 minutes.,high,monitor,calibration
+example-heartbeat-00,heartbeat,FICTIONAL CASE heartbeat-00. Worker heartbeat is absent and the queue is stalled. Observation window: 1 minutes.,low,restart_service,calibration
+example-heartbeat-01,heartbeat,FICTIONAL CASE heartbeat-01. Worker heartbeat is absent and the queue is stalled. Observation window: 2 minutes.,medium,restart_service,calibration
+example-heartbeat-02,heartbeat,FICTIONAL CASE heartbeat-02. Worker heartbeat is absent and the queue is stalled. Observation window: 3 minutes.,high,restart_service,calibration
+example-heartbeat-03,heartbeat,FICTIONAL CASE heartbeat-03. Worker heartbeat is absent and the queue is stalled. Observation window: 4 minutes.,low,restart_service,calibration
+example-heartbeat-04,heartbeat,FICTIONAL CASE heartbeat-04. Worker heartbeat is absent and the queue is stalled. Observation window: 5 minutes.,medium,restart_service,calibration
+example-heartbeat-05,heartbeat,FICTIONAL CASE heartbeat-05. Worker heartbeat is absent and the queue is stalled. Observation window: 6 minutes.,high,restart_service,calibration
+example-heartbeat-06,heartbeat,FICTIONAL CASE heartbeat-06. Worker heartbeat is absent and the queue is stalled. Observation window: 7 minutes.,low,restart_service,calibration
+example-heartbeat-07,heartbeat,FICTIONAL CASE heartbeat-07. Worker heartbeat is absent and the queue is stalled. Observation window: 8 minutes.,medium,restart_service,calibration
+example-heartbeat-08,heartbeat,FICTIONAL CASE heartbeat-08. Worker heartbeat is absent and the queue is stalled. Observation window: 9 minutes.,high,restart_service,calibration
+example-heartbeat-09,heartbeat,FICTIONAL CASE heartbeat-09. Worker heartbeat is absent and the queue is stalled. Observation window: 10 minutes.,low,restart_service,calibration
+example-heartbeat-10,heartbeat,FICTIONAL CASE heartbeat-10. Worker heartbeat is absent and the queue is stalled. Observation window: 11 minutes.,medium,restart_service,calibration
+example-heartbeat-11,heartbeat,FICTIONAL CASE heartbeat-11. Worker heartbeat is absent and the queue is stalled. Observation window: 12 minutes.,high,restart_service,calibration
+example-heartbeat-12,heartbeat,FICTIONAL CASE heartbeat-12. Worker heartbeat is absent and the queue is stalled. Observation window: 13 minutes.,low,restart_service,calibration
+example-heartbeat-13,heartbeat,FICTIONAL CASE heartbeat-13. Worker heartbeat is absent and the queue is stalled. Observation window: 14 minutes.,medium,restart_service,calibration
+example-heartbeat-14,heartbeat,FICTIONAL CASE heartbeat-14. Worker heartbeat is absent and the queue is stalled. Observation window: 15 minutes.,high,restart_service,calibration
+example-configuration-00,configuration,FICTIONAL CASE configuration-00. Error rates rose immediately after a config update. Observation window: 1 minutes.,low,rollback_config,calibration
+example-configuration-01,configuration,FICTIONAL CASE configuration-01. Error rates rose immediately after a config update. Observation window: 2 minutes.,medium,rollback_config,calibration
+example-configuration-02,configuration,FICTIONAL CASE configuration-02. Error rates rose immediately after a config update. Observation window: 3 minutes.,high,rollback_config,calibration
+example-configuration-03,configuration,FICTIONAL CASE configuration-03. Error rates rose immediately after a config update. Observation window: 4 minutes.,low,rollback_config,calibration
+example-configuration-04,configuration,FICTIONAL CASE configuration-04. Error rates rose immediately after a config update. Observation window: 5 minutes.,medium,rollback_config,calibration
+example-configuration-05,configuration,FICTIONAL CASE configuration-05. Error rates rose immediately after a config update. Observation window: 6 minutes.,high,rollback_config,calibration
+example-configuration-06,configuration,FICTIONAL CASE configuration-06. Error rates rose immediately after a config update. Observation window: 7 minutes.,low,rollback_config,calibration
+example-configuration-07,configuration,FICTIONAL CASE configuration-07. Error rates rose immediately after a config update. Observation window: 8 minutes.,medium,rollback_config,calibration
+example-configuration-08,configuration,FICTIONAL CASE configuration-08. Error rates rose immediately after a config update. Observation window: 9 minutes.,high,rollback_config,calibration
+example-configuration-09,configuration,FICTIONAL CASE configuration-09. Error rates rose immediately after a config update. Observation window: 10 minutes.,low,rollback_config,calibration
+example-configuration-10,configuration,FICTIONAL CASE configuration-10. Error rates rose immediately after a config update. Observation window: 11 minutes.,medium,rollback_config,calibration
+example-configuration-11,configuration,FICTIONAL CASE configuration-11. Error rates rose immediately after a config update. Observation window: 12 minutes.,high,rollback_config,calibration
+example-configuration-12,configuration,FICTIONAL CASE configuration-12. Error rates rose immediately after a config update. Observation window: 13 minutes.,low,rollback_config,calibration
+example-configuration-13,configuration,FICTIONAL CASE configuration-13. Error rates rose immediately after a config update. Observation window: 14 minutes.,medium,rollback_config,calibration
+example-configuration-14,configuration,FICTIONAL CASE configuration-14. Error rates rose immediately after a config update. Observation window: 15 minutes.,high,rollback_config,calibration
+example-saturation-00,saturation,FICTIONAL CASE saturation-00. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 1 minutes.,low,scale_capacity,calibration
+example-saturation-01,saturation,FICTIONAL CASE saturation-01. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 2 minutes.,medium,scale_capacity,calibration
+example-saturation-02,saturation,FICTIONAL CASE saturation-02. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 3 minutes.,high,scale_capacity,calibration
+example-saturation-03,saturation,FICTIONAL CASE saturation-03. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 4 minutes.,low,scale_capacity,calibration
+example-saturation-04,saturation,FICTIONAL CASE saturation-04. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 5 minutes.,medium,scale_capacity,calibration
+example-saturation-05,saturation,FICTIONAL CASE saturation-05. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 6 minutes.,high,scale_capacity,calibration
+example-saturation-06,saturation,FICTIONAL CASE saturation-06. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 7 minutes.,low,scale_capacity,calibration
+example-saturation-07,saturation,FICTIONAL CASE saturation-07. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 8 minutes.,medium,scale_capacity,calibration
+example-saturation-08,saturation,FICTIONAL CASE saturation-08. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 9 minutes.,high,scale_capacity,calibration
+example-saturation-09,saturation,FICTIONAL CASE saturation-09. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 10 minutes.,low,scale_capacity,calibration
+example-saturation-10,saturation,FICTIONAL CASE saturation-10. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 11 minutes.,medium,scale_capacity,calibration
+example-saturation-11,saturation,FICTIONAL CASE saturation-11. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 12 minutes.,high,scale_capacity,calibration
+example-saturation-12,saturation,FICTIONAL CASE saturation-12. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 13 minutes.,low,scale_capacity,calibration
+example-saturation-13,saturation,FICTIONAL CASE saturation-13. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 14 minutes.,medium,scale_capacity,calibration
+example-saturation-14,saturation,FICTIONAL CASE saturation-14. Sustained CPU utilization is 96% and demand exceeds capacity. Observation window: 15 minutes.,high,scale_capacity,calibration
+example-stable-config-00,stable-config,FICTIONAL CASE stable-config-00. A config update finished successfully; all health checks and error rates are normal. Observation window: 1 minutes.,low,monitor,calibration
+example-stable-config-01,stable-config,FICTIONAL CASE stable-config-01. A config update finished successfully; all health checks and error rates are normal. Observation window: 2 minutes.,medium,monitor,calibration
+example-stable-config-02,stable-config,FICTIONAL CASE stable-config-02. A config update finished successfully; all health checks and error rates are normal. Observation window: 3 minutes.,high,monitor,calibration
+example-stable-config-03,stable-config,FICTIONAL CASE stable-config-03. A config update finished successfully; all health checks and error rates are normal. Observation window: 4 minutes.,low,monitor,calibration
+example-stable-config-04,stable-config,FICTIONAL CASE stable-config-04. A config update finished successfully; all health checks and error rates are normal. Observation window: 5 minutes.,medium,monitor,calibration
+example-stable-config-05,stable-config,FICTIONAL CASE stable-config-05. A config update finished successfully; all health checks and error rates are normal. Observation window: 6 minutes.,high,monitor,calibration
+example-stable-config-06,stable-config,FICTIONAL CASE stable-config-06. A config update finished successfully; all health checks and error rates are normal. Observation window: 7 minutes.,low,monitor,calibration
+example-stable-config-07,stable-config,FICTIONAL CASE stable-config-07. A config update finished successfully; all health checks and error rates are normal. Observation window: 8 minutes.,medium,monitor,calibration
+example-stable-config-08,stable-config,FICTIONAL CASE stable-config-08. A config update finished successfully; all health checks and error rates are normal. Observation window: 9 minutes.,high,monitor,calibration
+example-stable-config-09,stable-config,FICTIONAL CASE stable-config-09. A config update finished successfully; all health checks and error rates are normal. Observation window: 10 minutes.,low,monitor,calibration
+example-stable-config-10,stable-config,FICTIONAL CASE stable-config-10. A config update finished successfully; all health checks and error rates are normal. Observation window: 11 minutes.,medium,monitor,calibration
+example-stable-config-11,stable-config,FICTIONAL CASE stable-config-11. A config update finished successfully; all health checks and error rates are normal. Observation window: 12 minutes.,high,monitor,calibration
+example-stable-config-12,stable-config,FICTIONAL CASE stable-config-12. A config update finished successfully; all health checks and error rates are normal. Observation window: 13 minutes.,low,monitor,calibration
+example-stable-config-13,stable-config,FICTIONAL CASE stable-config-13. A config update finished successfully; all health checks and error rates are normal. Observation window: 14 minutes.,medium,monitor,calibration
+example-stable-config-14,stable-config,FICTIONAL CASE stable-config-14. A config update finished successfully; all health checks and error rates are normal. Observation window: 15 minutes.,high,monitor,calibration
+example-recovered-worker-00,recovered-worker,FICTIONAL CASE recovered-worker-00. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 1 minutes.,low,monitor,calibration
+example-recovered-worker-01,recovered-worker,FICTIONAL CASE recovered-worker-01. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 2 minutes.,medium,monitor,calibration
+example-recovered-worker-02,recovered-worker,FICTIONAL CASE recovered-worker-02. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 3 minutes.,high,monitor,calibration
+example-recovered-worker-03,recovered-worker,FICTIONAL CASE recovered-worker-03. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 4 minutes.,low,monitor,calibration
+example-recovered-worker-04,recovered-worker,FICTIONAL CASE recovered-worker-04. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 5 minutes.,medium,monitor,calibration
+example-recovered-worker-05,recovered-worker,FICTIONAL CASE recovered-worker-05. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 6 minutes.,high,monitor,calibration
+example-recovered-worker-06,recovered-worker,FICTIONAL CASE recovered-worker-06. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 7 minutes.,low,monitor,calibration
+example-recovered-worker-07,recovered-worker,FICTIONAL CASE recovered-worker-07. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 8 minutes.,medium,monitor,calibration
+example-recovered-worker-08,recovered-worker,FICTIONAL CASE recovered-worker-08. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 9 minutes.,high,monitor,calibration
+example-recovered-worker-09,recovered-worker,FICTIONAL CASE recovered-worker-09. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 10 minutes.,low,monitor,calibration
+example-recovered-worker-10,recovered-worker,FICTIONAL CASE recovered-worker-10. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 11 minutes.,medium,monitor,calibration
+example-recovered-worker-11,recovered-worker,FICTIONAL CASE recovered-worker-11. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 12 minutes.,high,monitor,calibration
+example-recovered-worker-12,recovered-worker,FICTIONAL CASE recovered-worker-12. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 13 minutes.,low,monitor,calibration
+example-recovered-worker-13,recovered-worker,FICTIONAL CASE recovered-worker-13. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 14 minutes.,medium,monitor,calibration
+example-recovered-worker-14,recovered-worker,FICTIONAL CASE recovered-worker-14. A worker recovered on its own; heartbeat and queue processing are now normal. Observation window: 15 minutes.,high,monitor,calibration
+example-queue-00,queue,FICTIONAL CASE queue-00. An application worker is unresponsive and requests are stalled. Observation window: 1 minutes.,low,restart_service,validation
+example-queue-01,queue,FICTIONAL CASE queue-01. An application worker is unresponsive and requests are stalled. Observation window: 2 minutes.,medium,restart_service,validation
+example-queue-02,queue,FICTIONAL CASE queue-02. An application worker is unresponsive and requests are stalled. Observation window: 3 minutes.,high,restart_service,validation
+example-queue-03,queue,FICTIONAL CASE queue-03. An application worker is unresponsive and requests are stalled. Observation window: 4 minutes.,low,restart_service,validation
+example-queue-04,queue,FICTIONAL CASE queue-04. An application worker is unresponsive and requests are stalled. Observation window: 5 minutes.,medium,restart_service,validation
+example-queue-05,queue,FICTIONAL CASE queue-05. An application worker is unresponsive and requests are stalled. Observation window: 6 minutes.,high,restart_service,validation
+example-queue-06,queue,FICTIONAL CASE queue-06. An application worker is unresponsive and requests are stalled. Observation window: 7 minutes.,low,restart_service,validation
+example-queue-07,queue,FICTIONAL CASE queue-07. An application worker is unresponsive and requests are stalled. Observation window: 8 minutes.,medium,restart_service,validation
+example-queue-08,queue,FICTIONAL CASE queue-08. An application worker is unresponsive and requests are stalled. Observation window: 9 minutes.,high,restart_service,validation
+example-queue-09,queue,FICTIONAL CASE queue-09. An application worker is unresponsive and requests are stalled. Observation window: 10 minutes.,low,restart_service,validation
+example-queue-10,queue,FICTIONAL CASE queue-10. An application worker is unresponsive and requests are stalled. Observation window: 11 minutes.,medium,restart_service,validation
+example-queue-11,queue,FICTIONAL CASE queue-11. An application worker is unresponsive and requests are stalled. Observation window: 12 minutes.,high,restart_service,validation
+example-queue-12,queue,FICTIONAL CASE queue-12. An application worker is unresponsive and requests are stalled. Observation window: 13 minutes.,low,restart_service,validation
+example-queue-13,queue,FICTIONAL CASE queue-13. An application worker is unresponsive and requests are stalled. Observation window: 14 minutes.,medium,restart_service,validation
+example-queue-14,queue,FICTIONAL CASE queue-14. An application worker is unresponsive and requests are stalled. Observation window: 15 minutes.,high,restart_service,validation
+example-regression-00,regression,FICTIONAL CASE regression-00. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 1 minutes.,low,rollback_config,validation
+example-regression-01,regression,FICTIONAL CASE regression-01. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 2 minutes.,medium,rollback_config,validation
+example-regression-02,regression,FICTIONAL CASE regression-02. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 3 minutes.,high,rollback_config,validation
+example-regression-03,regression,FICTIONAL CASE regression-03. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 4 minutes.,low,rollback_config,validation
+example-regression-04,regression,FICTIONAL CASE regression-04. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 5 minutes.,medium,rollback_config,validation
+example-regression-05,regression,FICTIONAL CASE regression-05. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 6 minutes.,high,rollback_config,validation
+example-regression-06,regression,FICTIONAL CASE regression-06. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 7 minutes.,low,rollback_config,validation
+example-regression-07,regression,FICTIONAL CASE regression-07. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 8 minutes.,medium,rollback_config,validation
+example-regression-08,regression,FICTIONAL CASE regression-08. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 9 minutes.,high,rollback_config,validation
+example-regression-09,regression,FICTIONAL CASE regression-09. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 10 minutes.,low,rollback_config,validation
+example-regression-10,regression,FICTIONAL CASE regression-10. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 11 minutes.,medium,rollback_config,validation
+example-regression-11,regression,FICTIONAL CASE regression-11. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 12 minutes.,high,rollback_config,validation
+example-regression-12,regression,FICTIONAL CASE regression-12. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 13 minutes.,low,rollback_config,validation
+example-regression-13,regression,FICTIONAL CASE regression-13. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 14 minutes.,medium,rollback_config,validation
+example-regression-14,regression,FICTIONAL CASE regression-14. A bad config change increased authentication failures; the prior configuration passed checks. Observation window: 15 minutes.,high,rollback_config,validation
+example-idle-cpu-00,idle-cpu,FICTIONAL CASE idle-cpu-00. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 1 minutes.,low,monitor,validation
+example-idle-cpu-01,idle-cpu,FICTIONAL CASE idle-cpu-01. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 2 minutes.,medium,monitor,validation
+example-idle-cpu-02,idle-cpu,FICTIONAL CASE idle-cpu-02. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 3 minutes.,high,monitor,validation
+example-idle-cpu-03,idle-cpu,FICTIONAL CASE idle-cpu-03. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 4 minutes.,low,monitor,validation
+example-idle-cpu-04,idle-cpu,FICTIONAL CASE idle-cpu-04. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 5 minutes.,medium,monitor,validation
+example-idle-cpu-05,idle-cpu,FICTIONAL CASE idle-cpu-05. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 6 minutes.,high,monitor,validation
+example-idle-cpu-06,idle-cpu,FICTIONAL CASE idle-cpu-06. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 7 minutes.,low,monitor,validation
+example-idle-cpu-07,idle-cpu,FICTIONAL CASE idle-cpu-07. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 8 minutes.,medium,monitor,validation
+example-idle-cpu-08,idle-cpu,FICTIONAL CASE idle-cpu-08. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 9 minutes.,high,monitor,validation
+example-idle-cpu-09,idle-cpu,FICTIONAL CASE idle-cpu-09. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 10 minutes.,low,monitor,validation
+example-idle-cpu-10,idle-cpu,FICTIONAL CASE idle-cpu-10. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 11 minutes.,medium,monitor,validation
+example-idle-cpu-11,idle-cpu,FICTIONAL CASE idle-cpu-11. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 12 minutes.,high,monitor,validation
+example-idle-cpu-12,idle-cpu,FICTIONAL CASE idle-cpu-12. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 13 minutes.,low,monitor,validation
+example-idle-cpu-13,idle-cpu,FICTIONAL CASE idle-cpu-13. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 14 minutes.,medium,monitor,validation
+example-idle-cpu-14,idle-cpu,FICTIONAL CASE idle-cpu-14. CPU utilization is 12% and all checks are healthy; no capacity alert is active. Observation window: 15 minutes.,high,monitor,validation
+example-memory-demand-00,memory-demand,FICTIONAL CASE memory-demand-00. Memory capacity has reached its target and sustained demand continues rising. Observation window: 1 minutes.,low,scale_capacity,test
+example-memory-demand-01,memory-demand,FICTIONAL CASE memory-demand-01. Memory capacity has reached its target and sustained demand continues rising. Observation window: 2 minutes.,medium,scale_capacity,test
+example-memory-demand-02,memory-demand,FICTIONAL CASE memory-demand-02. Memory capacity has reached its target and sustained demand continues rising. Observation window: 3 minutes.,high,scale_capacity,test
+example-memory-demand-03,memory-demand,FICTIONAL CASE memory-demand-03. Memory capacity has reached its target and sustained demand continues rising. Observation window: 4 minutes.,low,scale_capacity,test
+example-memory-demand-04,memory-demand,FICTIONAL CASE memory-demand-04. Memory capacity has reached its target and sustained demand continues rising. Observation window: 5 minutes.,medium,scale_capacity,test
+example-memory-demand-05,memory-demand,FICTIONAL CASE memory-demand-05. Memory capacity has reached its target and sustained demand continues rising. Observation window: 6 minutes.,high,scale_capacity,test
+example-memory-demand-06,memory-demand,FICTIONAL CASE memory-demand-06. Memory capacity has reached its target and sustained demand continues rising. Observation window: 7 minutes.,low,scale_capacity,test
+example-memory-demand-07,memory-demand,FICTIONAL CASE memory-demand-07. Memory capacity has reached its target and sustained demand continues rising. Observation window: 8 minutes.,medium,scale_capacity,test
+example-memory-demand-08,memory-demand,FICTIONAL CASE memory-demand-08. Memory capacity has reached its target and sustained demand continues rising. Observation window: 9 minutes.,high,scale_capacity,test
+example-memory-demand-09,memory-demand,FICTIONAL CASE memory-demand-09. Memory capacity has reached its target and sustained demand continues rising. Observation window: 10 minutes.,low,scale_capacity,test
+example-memory-demand-10,memory-demand,FICTIONAL CASE memory-demand-10. Memory capacity has reached its target and sustained demand continues rising. Observation window: 11 minutes.,medium,scale_capacity,test
+example-memory-demand-11,memory-demand,FICTIONAL CASE memory-demand-11. Memory capacity has reached its target and sustained demand continues rising. Observation window: 12 minutes.,high,scale_capacity,test
+example-memory-demand-12,memory-demand,FICTIONAL CASE memory-demand-12. Memory capacity has reached its target and sustained demand continues rising. Observation window: 13 minutes.,low,scale_capacity,test
+example-memory-demand-13,memory-demand,FICTIONAL CASE memory-demand-13. Memory capacity has reached its target and sustained demand continues rising. Observation window: 14 minutes.,medium,scale_capacity,test
+example-memory-demand-14,memory-demand,FICTIONAL CASE memory-demand-14. Memory capacity has reached its target and sustained demand continues rising. Observation window: 15 minutes.,high,scale_capacity,test
+example-brief-loss-00,brief-loss,FICTIONAL CASE brief-loss-00. A short packet-loss burst has resolved and independent health checks pass. Observation window: 1 minutes.,low,monitor,test
+example-brief-loss-01,brief-loss,FICTIONAL CASE brief-loss-01. A short packet-loss burst has resolved and independent health checks pass. Observation window: 2 minutes.,medium,monitor,test
+example-brief-loss-02,brief-loss,FICTIONAL CASE brief-loss-02. A short packet-loss burst has resolved and independent health checks pass. Observation window: 3 minutes.,high,monitor,test
+example-brief-loss-03,brief-loss,FICTIONAL CASE brief-loss-03. A short packet-loss burst has resolved and independent health checks pass. Observation window: 4 minutes.,low,monitor,test
+example-brief-loss-04,brief-loss,FICTIONAL CASE brief-loss-04. A short packet-loss burst has resolved and independent health checks pass. Observation window: 5 minutes.,medium,monitor,test
+example-brief-loss-05,brief-loss,FICTIONAL CASE brief-loss-05. A short packet-loss burst has resolved and independent health checks pass. Observation window: 6 minutes.,high,monitor,test
+example-brief-loss-06,brief-loss,FICTIONAL CASE brief-loss-06. A short packet-loss burst has resolved and independent health checks pass. Observation window: 7 minutes.,low,monitor,test
+example-brief-loss-07,brief-loss,FICTIONAL CASE brief-loss-07. A short packet-loss burst has resolved and independent health checks pass. Observation window: 8 minutes.,medium,monitor,test
+example-brief-loss-08,brief-loss,FICTIONAL CASE brief-loss-08. A short packet-loss burst has resolved and independent health checks pass. Observation window: 9 minutes.,high,monitor,test
+example-brief-loss-09,brief-loss,FICTIONAL CASE brief-loss-09. A short packet-loss burst has resolved and independent health checks pass. Observation window: 10 minutes.,low,monitor,test
+example-brief-loss-10,brief-loss,FICTIONAL CASE brief-loss-10. A short packet-loss burst has resolved and independent health checks pass. Observation window: 11 minutes.,medium,monitor,test
+example-brief-loss-11,brief-loss,FICTIONAL CASE brief-loss-11. A short packet-loss burst has resolved and independent health checks pass. Observation window: 12 minutes.,high,monitor,test
+example-brief-loss-12,brief-loss,FICTIONAL CASE brief-loss-12. A short packet-loss burst has resolved and independent health checks pass. Observation window: 13 minutes.,low,monitor,test
+example-brief-loss-13,brief-loss,FICTIONAL CASE brief-loss-13. A short packet-loss burst has resolved and independent health checks pass. Observation window: 14 minutes.,medium,monitor,test
+example-brief-loss-14,brief-loss,FICTIONAL CASE brief-loss-14. A short packet-loss burst has resolved and independent health checks pass. Observation window: 15 minutes.,high,monitor,test
+example-release-errors-00,release-errors,FICTIONAL CASE release-errors-00. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 1 minutes.,low,rollback_config,test
+example-release-errors-01,release-errors,FICTIONAL CASE release-errors-01. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 2 minutes.,medium,rollback_config,test
+example-release-errors-02,release-errors,FICTIONAL CASE release-errors-02. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 3 minutes.,high,rollback_config,test
+example-release-errors-03,release-errors,FICTIONAL CASE release-errors-03. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 4 minutes.,low,rollback_config,test
+example-release-errors-04,release-errors,FICTIONAL CASE release-errors-04. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 5 minutes.,medium,rollback_config,test
+example-release-errors-05,release-errors,FICTIONAL CASE release-errors-05. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 6 minutes.,high,rollback_config,test
+example-release-errors-06,release-errors,FICTIONAL CASE release-errors-06. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 7 minutes.,low,rollback_config,test
+example-release-errors-07,release-errors,FICTIONAL CASE release-errors-07. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 8 minutes.,medium,rollback_config,test
+example-release-errors-08,release-errors,FICTIONAL CASE release-errors-08. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 9 minutes.,high,rollback_config,test
+example-release-errors-09,release-errors,FICTIONAL CASE release-errors-09. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 10 minutes.,low,rollback_config,test
+example-release-errors-10,release-errors,FICTIONAL CASE release-errors-10. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 11 minutes.,medium,rollback_config,test
+example-release-errors-11,release-errors,FICTIONAL CASE release-errors-11. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 12 minutes.,high,rollback_config,test
+example-release-errors-12,release-errors,FICTIONAL CASE release-errors-12. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 13 minutes.,low,rollback_config,test
+example-release-errors-13,release-errors,FICTIONAL CASE release-errors-13. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 14 minutes.,medium,rollback_config,test
+example-release-errors-14,release-errors,FICTIONAL CASE release-errors-14. A release introduced errors; the previous version was healthy and is available for rollback. Observation window: 15 minutes.,high,rollback_config,test

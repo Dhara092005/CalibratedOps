@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A local research workspace for human oversight, agent confidence calibration, and reproducible experiments.">
+  <title>CalibratedOps · Human oversight workspace</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/label-review.js" defer></script>
+  <script src="/prediction-runs.js" defer></script>
+  <script src="/diagnostics.js" defer></script>
+  <script src="/recovery-plans.js" defer></script>
+  <script src="/plan-lab.js" defer></script>
+  <script src="/plan-batches.js" defer></script>
+  <script src="/research.js" defer></script>
+  <script src="/understanding.js" defer></script>
+  <script src="/readiness.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <aside class="sidebar">
+    <a class="brand" href="/"><img src="/favicon.svg" width="38" height="38" alt=""><span>Calibrated<span class="brand-light">Ops</span><small>HUMAN OVERSIGHT LAB</small></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav aria-label="Main navigation">
+      <button class="nav active" data-page="queue" title="Incident queue" aria-current="page"><span aria-hidden="true">▣</span> Incident queue <b id="nav-count">0</b></button>
+      <button class="nav" data-page="experiments" title="Experiment lab"><span aria-hidden="true">◈</span> Experiment lab</button>
+      <button class="nav" data-page="datasets" title="Dataset lab"><span aria-hidden="true">▤</span> Dataset lab</button>
+      <button class="nav" data-page="labels" title="Label review"><span aria-hidden="true">✓</span> Label review</button>
+      <button class="nav" data-page="predictions" title="Prediction runs"><span aria-hidden="true">▶</span> Prediction runs</button>
+      <button class="nav" data-page="planlab" title="Plan lab"><span aria-hidden="true">☷</span> Plan lab</button>
+      <button class="nav" data-page="planbatches" title="Plan dashboard"><span aria-hidden="true">▥</span> Plan dashboard</button>
+      <button class="nav" data-page="readiness" title="Research readiness"><span aria-hidden="true">◉</span> Research readiness</button>
+      <button class="nav" data-page="research" title="Research lab"><span aria-hidden="true">◷</span> Research lab</button>
+      <button class="nav" data-page="audit" title="Decision audit"><span aria-hidden="true">≡</span> Decision audit</button>
+      <button class="nav" data-page="guide" title="Project guide"><span aria-hidden="true">◎</span> Project guide</button>
+    </nav>
+    <div class="sidebar-note"><div class="mini-mark">H + AI</div><h3>People stay in control.</h3><p>Confidence informs the decision. Human judgment shapes the outcome.</p></div>
+    <div class="local-status"><span class="status-dot"></span> Local research workspace<small>Version 1.13 · Single user</small></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><span>Research workspace <span class="breadcrumb">/ <span id="page-name">Incident queue</span></span></span><div><span class="mode-tag">SIMULATED EXECUTION</span><button class="icon-button" id="refresh" title="Refresh workspace">Refresh</button></div></header>
+    <main id="main" tabindex="-1">
+      <div id="connection-error" class="error-banner" hidden></div>
+      <div id="content"><div class="empty-state"><h1>Opening your workspace…</h1><p>Connecting to the local incident harness.</p></div></div>
+    </main>
+    <footer>CalibratedOps <span>Designed for human agency. Built for reproducible research.</span></footer>
+  </div>
+  <dialog id="incident-dialog" aria-labelledby="dialog-title">
+    <form id="incident-form">
+      <div class="dialog-heading"><div><p class="eyebrow">AGENT WORKSPACE</p><h2 id="dialog-title">Investigate an incident</h2></div><button type="button" class="icon-button" data-close aria-label="Close dialog">✕</button></div>
+      <p class="muted">Describe the evidence. The agent will propose an action for you to review.</p>
+      <label>Incident title<input name="title" required maxlength="160" placeholder="e.g. Rising error rate after deployment"></label>
+      <label>Observed evidence<textarea name="evidence" required maxlength="12000" rows="5" placeholder="Include symptoms, recent changes, and available telemetry. Avoid secrets or personal data."></textarea></label>
+      <div class="form-grid"><label>Impact risk<select name="risk"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></label><label>Proposal agent<select name="agent" id="agent-select"><option value="rules">Local rule agent</option><option value="openai">OpenAI · live proposal</option></select></label></div>
+      <p id="agent-note" class="callout">Local rules need no API key. All custom incidents require human review.</p>
+      <p id="incident-error" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" class="button secondary" data-close>Cancel</button><button class="button primary" type="submit">Get proposal</button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

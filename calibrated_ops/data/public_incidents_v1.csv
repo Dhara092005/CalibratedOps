@@ -1,0 +1,18 @@
+id,group_id,evidence,risk,label,split
+cf-2019-07-02-waf,cf-2019,"Global proxy requests return 502 errors after a new managed firewall rule deploys. CPU usage reaches saturation across affected machines.",high,rollback_config,calibration
+cf-2022-06-21-bgp,cf-2022,"Multiple busy data centers become unreachable after routing-policy terms are reordered. Critical prefixes are no longer advertised.",high,rollback_config,calibration
+gh-2023-04-26-packages,gh-may-2023,"Package uploads and downloads are slow or failing. Investigation finds a surge of connection errors against the primary database.",high,restart_service,calibration
+gh-2024-03-11-network,gh-mar-2024,"Several services show intermittent request failures after network configuration is deployed to an unintended environment.",high,rollback_config,calibration
+gh-2024-03-15-permissions,gh-mar-2024,"Permissions-dependent services fail after a framework upgrade. The generated database syntax is incompatible with production database proxies.",high,rollback_config,calibration
+gh-2024-04-05-balancer,gh-apr-2024,"Web requests and workflow starts fail after a database load-balancer change. Connections to critical databases in one data center are failing.",high,rollback_config,calibration
+gh-2024-04-10-db-am,gh-apr-2024,"Repository editing and collaboration requests fail. An unbounded query overloads a primary database instance and creates contention.",high,scale_capacity,calibration
+gh-2024-04-10-db-pm,gh-apr-2024,"A compute-heavy query monopolizes a shared database cluster. Dependent workflow execution and API requests experience widespread timeouts.",high,rollback_config,calibration
+cf-2024-06-20-loop,cf-jun-2024,"A proxy service accumulates processes stuck in infinite loops while request errors rise. The triggering request mechanism is still under investigation.",high,restart_service,calibration
+gh-2024-08-14-db-health,gh-aug-2024,"A recent database configuration change breaks routing-service health checks. Read endpoints become unreachable and application requests fail broadly.",high,rollback_config,calibration
+cf-2025-09-12-tenant,cf-sep-2025,"Dashboard and authorization API errors worsen after another Tenant Service deployment during an existing overload incident. Additional resources had only partially improved availability.",medium,rollback_config,validation
+gh-2025-09-15-rate-flag,gh-sep-2025,"A newly deployed global rate-limiter feature flag causes requests to be rejected with 403 responses across most assistant features.",high,rollback_config,validation
+gh-2025-09-29-mcp,gh-sep-2025,"A dependency upgrade exposes a service misconfiguration. Some assistant API integration requests return unexpected 404 responses.",medium,rollback_config,validation
+cf-2025-11-18-feature-file,cf-nov-2025,"Core proxy traffic fails after a generated bot-classification data file exceeds the consumer's supported size. Failures follow distribution of the oversized file.",high,rollback_config,test
+gh-2025-11-18-tls,gh-nov-2025,"Git operations over SSH and HTTP and raw-file reads are failing. An expired certificate for internal service communication has been identified.",high,restart_service,test
+gh-2025-11-28-model,gh-nov-2025,"One assistant model is unavailable and requests return 400 errors after an internal configuration update. Other models continue to work.",medium,rollback_config,test
+cf-2025-12-05-waf,cf-dec-2025,"A portion of proxy traffic returns server errors after changes to firewall request-body parsing. The failure follows configuration propagation.",high,rollback_config,test
