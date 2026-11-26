@@ -1,26 +1,38 @@
 # CalibratedOps
 
-**A local research platform for human oversight of AI incident-recovery proposals.**
+**Human oversight, confidence calibration, and review of AI incident-recovery proposals.**
+
+**[Open the live demo](https://calibratedops.onrender.com/)** · [Run locally](#run-locally) · [Documentation](#documentation)
 
 CalibratedOps helps people inspect agent proposals, challenge uncertain recommendations, and record recovery decisions. It combines source-backed incident datasets, confidence calibration, multi-step plan review, and supervised research workflows in a single-user web application.
 
-**Project status:** the software features are implemented. Empirical research evaluation remains incomplete: reference adjudication, genuine participant sessions, independent understanding scores, and sufficient calibration evidence are still required. The last verified regression run passed **151 tests**.
+**Status:** implemented and tested with **151 regression tests**. Empirical research evaluation remains ongoing; software verification does not establish real-world effectiveness.
 
 All infrastructure actions are simulated. This independent project was inspired by the [Ericsson thesis topic](https://jobs.ericsson.com/careers/job/563121777275159-thesis-human-in-the-loop-calibrated-agent-harness-karlskrona-blekinge-sweden); it is not affiliated with Ericsson.
 
 ![Research readiness dashboard](docs/research-readiness.jpg)
 
-## Quick start
+## Live demo
+
+Visit **[calibratedops.onrender.com](https://calibratedops.onrender.com/)** to explore the working application. **No sign-in is required.** Start with **Load demo incidents**, or open **Dataset lab** to inspect the bundled public cases.
+
+The demo runs on Render's Free plan and may take about a minute to wake after inactivity. It uses shared, temporary sample data: changes can disappear on restart or redeployment. Live AI is disabled. Use the demo for exploration, and keep private information and genuine participant responses in a separately managed research workspace.
+
+## Run locally
 
 Requires **Python 3.10 or later**. The application uses the Python standard library and SQLite, with no third-party runtime dependencies. The offline demonstration needs no API key or internet connection.
 
-From the project directory:
+Clone the repository and start the server:
 
 ```powershell
+git clone https://github.com/Dhara092005/CalibratedOps.git
+cd CalibratedOps
 python -m calibrated_ops serve
 ```
 
-Open **[http://127.0.0.1:8767/](http://127.0.0.1:8767/)** and keep the terminal running. Press `Ctrl+C` to stop. On Windows, you can also double-click `start.cmd`.
+Open **[http://127.0.0.1:8767/](http://127.0.0.1:8767/)** and keep the terminal running. Press `Ctrl+C` to stop. On Windows, you can also double-click `start.cmd` in the project folder.
+
+The `127.0.0.1` address works only on the computer running the server. For online access, use the HTTPS live-demo link above.
 
 To use a different port or a separate workspace:
 
@@ -30,9 +42,9 @@ python -m calibrated_ops serve --port 8770 --database runs/another-study.sqlite3
 
 The local server binds to `127.0.0.1`. It supports single-user operation and supervised participant sessions, one person at a time. It has no separate participant accounts.
 
-## Free live demo hosting
+## Deployment
 
-The repository includes a Docker image and a **free Render Blueprint** for a working live demo, with public access and temporary SQLite storage. No paid disk is configured. The demo seeds the bundled public incidents, disables live AI, and labels its data as temporary sample data. It can sleep when idle and lose changes on restart or redeploy. Your local reviews and participant records are not uploaded. Follow the [deployment guide](docs/DEPLOYMENT.md).
+The repository includes a Docker image and a Render Blueprint for the public demo. The default configuration uses the **Free** plan with no paid disk, seeds the public incident collections, and marks the workspace as temporary. Local databases, reviews, and participant records are not uploaded by a Git deployment. See the [deployment guide](docs/DEPLOYMENT.md) for configuration, container checks, and private-hosting options.
 
 ## Features
 
@@ -121,7 +133,7 @@ The single-action simulator and recovery-plan confidence evaluation are separate
 
 ## Optional live AI generation
 
-Offline features work without configuration. To enable the existing OpenAI adapter, enter your API key privately in the PowerShell terminal that starts the server:
+The public demo disables live AI. Offline features work without configuration. For a local or separately protected workspace, enable the OpenAI adapter by entering your API key privately in the PowerShell terminal that starts the server:
 
 ```powershell
 $secret = Read-Host 'OpenAI API key' -AsSecureString
@@ -153,6 +165,8 @@ Get-ChildItem calibrated_ops/static -Filter '*.js' | ForEach-Object {
 
 Tests cover storage, review revisions, grouped evaluation, HTTP routes, concurrency, research trials, scoring, and readiness counts. They use temporary databases and mocked provider responses. HTTP tests require loopback socket access. GitHub Actions runs the Python suite on Python 3.10 and 3.14.
 
+The deployment workflow also builds the Docker image and checks private authentication, public-demo access, origin restrictions, API writes, and temporary-storage behavior. See [GitHub Actions](https://github.com/Dhara092005/CalibratedOps/actions).
+
 ## Data handling
 
 The default database is `runs/calibrated_ops.sqlite3`. Use a different `--database` path to create an isolated workspace. For a file-copy backup, stop the server first so SQLite can checkpoint its write-ahead log.
@@ -170,18 +184,21 @@ Output: `runs/CalibratedOps-project.zip`.
 ## Project structure
 
 ```text
-calibrated_ops/    Python application, agents, storage, evaluation, and research workflows
-  data/           Fictional fixtures and attributed public-incident collections
-  static/         HTML, CSS, and JavaScript interface
-scripts/          Research reports, review worksheets, and source packaging
-tests/           Automated regression tests
-docs/            Architecture, workflows, protocols, and presentation materials
-.github/workflows/ Continuous integration
+calibrated_ops/      Application, agents, storage, evaluation, and research workflows
+  data/             Fictional fixtures and attributed public-incident collections
+  static/           HTML, CSS, and JavaScript interface
+scripts/            Research reports, review worksheets, and source packaging
+tests/              Automated regression and container checks
+docs/               Architecture, protocols, guides, and presentation materials
+.github/workflows/  Continuous integration
+Dockerfile          Hosted application image
+render.yaml         Free live-demo deployment configuration
 ```
 
 ## Documentation
 
 - [Architecture and API](docs/ARCHITECTURE.md)
+- [Deployment guide](docs/DEPLOYMENT.md)
 - [Guided reference review](docs/GUIDED_REVIEW.md)
 - [Recovery plans and prerequisites](docs/RECOVERY_PLANS.md)
 - [Prediction runs](docs/PREDICTION_RUNS.md)
