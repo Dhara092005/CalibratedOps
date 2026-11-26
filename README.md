@@ -30,9 +30,9 @@ python -m calibrated_ops serve --port 8770 --database runs/another-study.sqlite3
 
 The local server binds to `127.0.0.1`. It supports single-user operation and supervised participant sessions, one person at a time. It has no separate participant accounts.
 
-## Full app hosting
+## Free live demo hosting
 
-The repository includes a Docker image and Render Blueprint for the complete application, with a password-protected gateway and persistent SQLite storage. This remains one single-user workspace. The hosted workspace seeds the bundled public incidents; your local reviews and participant records are not uploaded. Render's service and persistent disk require a paid plan. Follow the [deployment guide](docs/DEPLOYMENT.md) before creating hosting resources.
+The repository includes a Docker image and a **free Render Blueprint** for a working live demo, with a password-protected gateway and temporary SQLite storage. No paid disk is configured. The demo seeds the bundled public incidents, disables live AI, and labels its data as temporary sample data. It can sleep when idle and lose changes on restart or redeploy. Your local reviews and participant records are not uploaded. Follow the [deployment guide](docs/DEPLOYMENT.md).
 
 ## Features
 

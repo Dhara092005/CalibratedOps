@@ -52,4 +52,4 @@ The database backup contains your local records and is separate from the source 
 
 ## Hosted deployment
 
-The Docker image and Render Blueprint add a password-protected gateway, persistent SQLite storage, health checks, exact public-origin validation, and idempotent public-case seeding. The isolated Docker smoke test passed authentication, host/origin checks, writes, and restart persistence. See DEPLOYMENT.md. Cloud publication still requires creating the Render resources; preparing and testing the container does not mean the hosted service is live. Local participant records are not migrated.
+The default Render Blueprint is a free, password-protected working demo with temporary SQLite storage, public-case seeding, health checks and exact-origin validation. No paid disk is configured. Demo mode labels data as temporary and disables live AI. The container tests cover access controls, writes, optional-volume persistence and a clean fresh-container reset. See DEPLOYMENT.md. Local participant records are not uploaded. Deployment preparation does not imply that the hosted service is live.

@@ -40,7 +40,7 @@ def string(data, key, default="", maximum=4000, required=False):
     return value.strip()
 
 
-def make_server(port=8767, database="runs/calibrated_ops.sqlite3", public_origin=None):
+def make_server(port=8767, database="runs/calibrated_ops.sqlite3", public_origin=None, demo=False):
     store = Store(database)
     predictions = PredictionRuns(store)
     plan_jobs = PlanJobs(store)
@@ -93,7 +93,7 @@ def make_server(port=8767, database="runs/calibrated_ops.sqlite3", public_origin
                         datasets=store.datasets(), prediction_runs=predictions.list(),plan_jobs=plan_jobs.list(),plan_actions=list(PLAN_ACTIONS),plan_batches=plan_batches.list(),
                         threshold=store.threshold(), actions=ACTIONS,
                         ai_configured=bool(os.environ.get("OPENAI_API_KEY", "").strip()),
-                        model=os.environ.get("OPENAI_MODEL", "gpt-6.2-astra"), token=token)
+                        model=os.environ.get("OPENAI_MODEL", "gpt-6.2-astra"), token=token, ephemeral_demo=demo)
 
         def do_GET(self):
             if not self.valid_host():
@@ -163,7 +163,7 @@ def make_server(port=8767, database="runs/calibrated_ops.sqlite3", public_origin
                 result = self.state(export=True)
                 for field in ("token", "ai_configured"):
                     result.pop(field)
-                result["notice"] = "Local research export. Infrastructure actions are simulated. Pending evaluation labels are omitted."
+                result["notice"] = ("Live demo export: sample data only, not genuine research observations. Changes may be lost on restart." if demo else "Local research export. Infrastructure actions are simulated. Pending evaluation labels are omitted.")
                 return self.send(200, result, download=True)
             if path == "/api/datasets/example.csv":
                 return self.send(200, (Path(__file__).parent / "data" / "example_incidents.csv").read_bytes(), "text/csv; charset=utf-8")

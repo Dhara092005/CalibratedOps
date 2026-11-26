@@ -73,6 +73,10 @@ http://:%s {
 def main():
     try:
         config=configuration(os.environ)
+        demo=os.environ.get('CALIBRATED_DEMO')=='1'
+        if demo:
+            # The free demonstration must never consume a configured paid API key.
+            os.environ.pop('OPENAI_API_KEY',None)
         # Password is sent over stdin, never command arguments, files, or logs.
         child_env={k:v for k,v in os.environ.items() if k not in ('CALIBRATED_PASSWORD','OPENAI_API_KEY')}
         result=subprocess.run(['caddy','hash-password','--algorithm','bcrypt'],
@@ -92,7 +96,7 @@ def main():
                 source=Path(__file__).parent/'data'/f'additional_public_incidents_{version}.json'
                 name,data=additional_dataset(source)
                 store.save_dataset(name,data)
-        server=make_server(8767,str(config['database']),public_origin=config['origin'])
+        server=make_server(8767,str(config['database']),public_origin=config['origin'],demo=demo)
     except (ValueError,OSError,subprocess.SubprocessError):
         raise SystemExit('Hosted startup failed. Check HTTPS origin, password, persistent path, and Caddy installation. No public listener was started.')
     worker=Thread(target=server.serve_forever,daemon=True)

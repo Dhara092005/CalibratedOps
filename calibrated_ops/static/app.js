@@ -128,6 +128,7 @@ function render() {
   $("#page-name").textContent=names[page]; $("#nav-count").textContent=state.stats.pending;
   document.querySelectorAll("[data-page]").forEach(b=>{b.classList.toggle("active",b.dataset.page===page); if(b.dataset.page===page)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
   $("#content").innerHTML=page==="queue"?queuePage():page==="experiments"?experimentsPage():page==="datasets"?datasetsPage():page==='labels'?labelReviewPage():page==='predictions'?predictionPage():page==='planlab'?planLabPage():page==='planbatches'?planBatchPage():page==='research'?researchPage():page==='readiness'?readinessPage():page==="audit"?auditPage():guidePage();
+  if(state.ephemeral_demo) $("#content").insertAdjacentHTML("afterbegin",'<div class="info-banner" role="status"><div><strong>Live demo · temporary sample data.</strong> Changes can be lost when this service restarts or sleeps. Use sample data only; do not enter participant responses or private information. Live AI is disabled.</div></div>');
   if(page==="queue") { $("#status-filter").value=filter;$("#risk-filter").value=risk;renderList();renderDetail(); }
 }
 async function generate(button) {

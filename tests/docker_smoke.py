@@ -43,11 +43,13 @@ def main():
             time.sleep(.5)
         raise AssertionError('Container did not become healthy')
     docker('volume','create',volume)
-    try:
-        docker('run','-d','--name',name,'-p',f'127.0.0.1:{port}:10000',
-               '--mount',f'type=volume,source={volume},target=/var/data',
-               '-e','CALIBRATED_PASSWORD','-e','CALIBRATED_LOCAL_TEST=1',
+    def launch(persistent):
+        mount=['--mount',f'type=volume,source={volume},target=/var/data'] if persistent else []
+        docker('run','-d','--name',name,'-p',f'127.0.0.1:{port}:10000',*mount,
+               '-e','CALIBRATED_PASSWORD','-e','CALIBRATED_LOCAL_TEST=1','-e','CALIBRATED_DEMO=1',
                '-e',f'CALIBRATED_PUBLIC_ORIGIN={origin}','calibratedops:deploy-test',env=env)
+    try:
+        launch(True)
         healthy()
         for path in ('/','/app.js','/api/state','/api/export','/api/research-readiness'):
             assert request(path)[0]==401,path
@@ -56,6 +58,10 @@ def main():
         status,body=request('/api/state',headers={'Authorization':auth})
         assert status==200
         state=json.loads(body);assert len(state['datasets'])==3
+        assert state['ephemeral_demo'] is True
+        assert state['ai_configured'] is False
+        status,export=request('/api/export',headers={'Authorization':auth})
+        assert status==200 and 'not genuine research observations' in json.loads(export)['notice']
         assert sum(d['metadata']['records'] for d in state['datasets'])==28
         payload=dict(title='Synthetic deployment QA',evidence='Temporary QA latency observation.',risk='low',agent='rules')
         headers={'Authorization':auth,'X-Review-Token':state['token'],'Origin':'https://attacker.invalid'}
@@ -69,7 +75,13 @@ def main():
         assert any(i['id']==ident for i in state['incidents'])
         assert len(state['datasets'])==3,'Restart duplicated bundled datasets'
         assert request('/api/export')[0]==401
-        print('Container checks passed: authentication, host/origin checks, real API writes, seeded public cases, and persisted data after restart.')
+        docker('rm','-f',name)
+        launch(False);healthy()
+        status,body=request('/api/state',headers={'Authorization':auth})
+        fresh=json.loads(body)
+        assert status==200 and fresh['ephemeral_demo'] is True
+        assert len(fresh['datasets'])==3 and not fresh['incidents']
+        print('Container checks passed: authentication, host/origin checks, writes, public cases, optional volume persistence, and a clean reset on a fresh ephemeral demo container.')
     finally:
         subprocess.run(['docker','rm','-f',name],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         subprocess.run(['docker','volume','rm',volume],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)

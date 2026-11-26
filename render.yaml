@@ -2,7 +2,7 @@ services:
   - type: web
     name: calibratedops
     runtime: docker
-    plan: starter
+    plan: free
     numInstances: 1
     healthCheckPath: /healthz
     envVars:
@@ -12,7 +12,5 @@ services:
         value: /var/data/calibrated_ops.sqlite3
       - key: CALIBRATED_PASSWORD
         generateValue: true
-    disk:
-      name: calibratedops-data
-      mountPath: /var/data
-      sizeGB: 1
+      - key: CALIBRATED_DEMO
+        value: "1"
