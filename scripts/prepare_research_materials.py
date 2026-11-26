@@ -17,7 +17,7 @@ def additional_dataset(case_file=None):
     rows=[{k:r[k] for k in ('id','group_id','evidence','risk','label','split')} for r in raw['records']]
     data=parse_dataset(json.dumps(rows),'json')
     data['metadata'].update(acquisition_staging=True,labels='Assistant-authored provisional labels; independent review pending.',
-        provenance=dict(kind='real_public_reports',version=raw.get('version','additional-staging-v1'),collected_on=raw['collected_on'],review_status='pending_expert_review',sources=list(raw['sources'].values())))
+        provenance=dict(kind='real_public_reports',version=raw.get('version','additional-staging-v1'),collected_on=raw['collected_on'],review_status='pending_expert_review',source_count=len(raw['sources']),sources=list(raw['sources'].values())))
     data['record_sources']={r['id']:dict(id=r['id'],source_id=r['group_id'],source=raw['sources'][r['group_id']],
         incident_date=r['incident_date'],locator=r['locator'],reported_recovery=r['reported_recovery'],multi_action=len(r['steps'])>1,
         review_status='pending_expert_review',recovery_plan=dict(steps=validate_steps(r['steps']),source_url=raw['sources'][r['group_id']]['url'],
