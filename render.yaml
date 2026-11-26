@@ -10,7 +10,7 @@ services:
         value: "10000"
       - key: CALIBRATED_DATABASE
         value: /var/data/calibrated_ops.sqlite3
-      - key: CALIBRATED_PASSWORD
-        generateValue: true
       - key: CALIBRATED_DEMO
+        value: "1"
+      - key: CALIBRATED_PUBLIC_DEMO
         value: "1"

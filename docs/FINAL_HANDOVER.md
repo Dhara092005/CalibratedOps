@@ -20,7 +20,7 @@ Infrastructure actions are simulated. Live OpenAI calls need explicit authorizat
 
 ## Verification
 
-Version 1.14 includes 149 regression tests, including readiness counts, prepared-versus-completed trials, latest reference decisions, two-assessor coverage, outcome masking, endpoint checks, and a check that historical account tables cannot reactivate a login screen. The latest run is recorded in `runs/latest-test-results.txt`. All ten JavaScript files passed syntax checks, and Python compilation passed. The application is local and single-user; account and shared-hosting features have been removed.
+Version 1.14 includes 151 regression tests, including readiness counts, prepared-versus-completed trials, latest reference decisions, two-assessor coverage, outcome masking, endpoint checks, and a check that historical account tables cannot reactivate a login screen. The latest run is recorded in `runs/latest-test-results.txt`. All ten JavaScript files passed syntax checks, and Python compilation passed. The application is local and single-user; account and shared-hosting features have been removed.
 
 Open **Research readiness** for current progress and task shortcuts. Its JSON export contains progress counts, not participant responses. R01/R02 scoring coverage is counted only after study closure; identities and independence remain self-declared. Separate public datasets contribute to inventory counts but are never treated as a pooled eligible calibration cohort. The report card links to the existing results workflow; it does not mark a final report complete.
 
@@ -52,4 +52,4 @@ The database backup contains your local records and is separate from the source 
 
 ## Hosted deployment
 
-The default Render Blueprint is a free, password-protected working demo with temporary SQLite storage, public-case seeding, health checks and exact-origin validation. No paid disk is configured. Demo mode labels data as temporary and disables live AI. The container tests cover access controls, writes, optional-volume persistence and a clean fresh-container reset. See DEPLOYMENT.md. Local participant records are not uploaded. Deployment preparation does not imply that the hosted service is live.
+The default Render Blueprint is a free, public working demo with temporary SQLite storage, public-case seeding, health checks and exact-origin validation. No paid disk is configured. Demo mode labels data as temporary and disables live AI. The container tests cover access controls, writes, optional-volume persistence and a clean fresh-container reset. See DEPLOYMENT.md. Local participant records are not uploaded. Deployment preparation does not imply that the hosted service is live.

@@ -4,7 +4,7 @@
 
 CalibratedOps helps people inspect agent proposals, challenge uncertain recommendations, and record recovery decisions. It combines source-backed incident datasets, confidence calibration, multi-step plan review, and supervised research workflows in a single-user web application.
 
-**Project status:** the software features are implemented. Empirical research evaluation remains incomplete: reference adjudication, genuine participant sessions, independent understanding scores, and sufficient calibration evidence are still required. The last verified regression run passed **149 tests**.
+**Project status:** the software features are implemented. Empirical research evaluation remains incomplete: reference adjudication, genuine participant sessions, independent understanding scores, and sufficient calibration evidence are still required. The last verified regression run passed **151 tests**.
 
 All infrastructure actions are simulated. This independent project was inspired by the [Ericsson thesis topic](https://jobs.ericsson.com/careers/job/563121777275159-thesis-human-in-the-loop-calibrated-agent-harness-karlskrona-blekinge-sweden); it is not affiliated with Ericsson.
 
@@ -32,7 +32,7 @@ The local server binds to `127.0.0.1`. It supports single-user operation and sup
 
 ## Free live demo hosting
 
-The repository includes a Docker image and a **free Render Blueprint** for a working live demo, with a password-protected gateway and temporary SQLite storage. No paid disk is configured. The demo seeds the bundled public incidents, disables live AI, and labels its data as temporary sample data. It can sleep when idle and lose changes on restart or redeploy. Your local reviews and participant records are not uploaded. Follow the [deployment guide](docs/DEPLOYMENT.md).
+The repository includes a Docker image and a **free Render Blueprint** for a working live demo, with public access and temporary SQLite storage. No paid disk is configured. The demo seeds the bundled public incidents, disables live AI, and labels its data as temporary sample data. It can sleep when idle and lose changes on restart or redeploy. Your local reviews and participant records are not uploaded. Follow the [deployment guide](docs/DEPLOYMENT.md).
 
 ## Features
 

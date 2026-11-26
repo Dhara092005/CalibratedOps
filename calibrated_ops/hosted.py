@@ -24,7 +24,10 @@ def configuration(env):
             or not re.fullmatch(r'[A-Za-z0-9.-]+(?::[0-9]+)?',parsed.netloc)):
         raise ValueError('Set CALIBRATED_PUBLIC_ORIGIN to the exact HTTPS origin, without a trailing slash.')
     password=env.get('CALIBRATED_PASSWORD','')
-    if not 16<=len(password.encode('utf-8'))<=72 or '\n' in password or '\r' in password:
+    public_demo=env.get('CALIBRATED_PUBLIC_DEMO')=='1'
+    if public_demo and env.get('CALIBRATED_DEMO')!='1':
+        raise ValueError('Password-free access is allowed only with CALIBRATED_DEMO=1.')
+    if not public_demo and (not 16<=len(password.encode('utf-8'))<=72 or '\n' in password or '\r' in password):
         raise ValueError('Set CALIBRATED_PASSWORD to a secret of 16 to 72 UTF-8 bytes, without newlines.')
     port=int(env.get('PORT','10000'))
     if not 1024<=port<=65535 or port==8767:
@@ -32,12 +35,13 @@ def configuration(env):
     database=Path(env.get('CALIBRATED_DATABASE','/var/data/calibrated_ops.sqlite3'))
     if not database.is_absolute():
         raise ValueError('CALIBRATED_DATABASE must be an absolute persistent-storage path.')
-    return dict(origin=origin,hostname=parsed.hostname,password=password,port=port,database=database)
+    return dict(origin=origin,hostname=parsed.hostname,password=password,port=port,database=database,public_demo=public_demo)
 
 
-def gateway_config(config,hashed_password):
-    if not re.fullmatch(r'\$2[aby]\$[0-9]{2}\$[./A-Za-z0-9]{53}',hashed_password):
+def gateway_config(config,hashed_password=None):
+    if not config['public_demo'] and not re.fullmatch(r'\$2[aby]\$[0-9]{2}\$[./A-Za-z0-9]{53}',hashed_password or ''):
         raise ValueError('Caddy did not return a valid bcrypt password hash.')
+    authentication='' if config['public_demo'] else 'basic_auth {\n                admin %s\n            }' % hashed_password
     return '''{
     admin off
     auto_https off
@@ -54,9 +58,7 @@ http://:%s {
             }
         }
         handle {
-            basic_auth {
-                admin %s
-            }
+            %s
             request_body {
                 max_size 13MB
             }
@@ -67,7 +69,7 @@ http://:%s {
         }
     }
 }
-''' % (config['port'],config['hostname'],hashed_password)
+''' % (config['port'],config['hostname'],authentication)
 
 
 def main():
@@ -79,10 +81,13 @@ def main():
             os.environ.pop('OPENAI_API_KEY',None)
         # Password is sent over stdin, never command arguments, files, or logs.
         child_env={k:v for k,v in os.environ.items() if k not in ('CALIBRATED_PASSWORD','OPENAI_API_KEY')}
-        result=subprocess.run(['caddy','hash-password','--algorithm','bcrypt'],
-                              input=config['password']+'\n',text=True,capture_output=True,
-                              check=True,env=child_env,timeout=30)
-        gateway=gateway_config(config,result.stdout.strip())
+        hashed_password=None
+        if not config['public_demo']:
+            result=subprocess.run(['caddy','hash-password','--algorithm','bcrypt'],
+                                  input=config['password']+'\n',text=True,capture_output=True,
+                                  check=True,env=child_env,timeout=30)
+            hashed_password=result.stdout.strip()
+        gateway=gateway_config(config,hashed_password)
         del config['password']
         config['database'].parent.mkdir(parents=True,exist_ok=True)
         if os.environ.get('CALIBRATED_SEED_PUBLIC','1')=='1':
@@ -111,7 +116,7 @@ def main():
                                stdin=subprocess.PIPE,text=True,env=child_env)
         proxy.stdin.write(gateway)
         proxy.stdin.close()
-        print('Protected single-user workspace starting. Database uses the configured persistent path.',flush=True)
+        print('Public temporary demo starting.' if config['public_demo'] else 'Protected single-user workspace starting.',flush=True)
         while not stopped.wait(1):
             if proxy.poll() is not None or not worker.is_alive():
                 raise SystemExit('Hosted worker stopped; restart the service.')

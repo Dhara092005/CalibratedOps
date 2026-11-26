@@ -41,3 +41,15 @@ class HostedConfigurationTests(unittest.TestCase):
         with self.assertRaises(ValueError):configuration(dict(self.env(),CALIBRATED_DATABASE='runs/data.sqlite3'))
         for port in ('80','8767','65536'):
             with self.assertRaises(ValueError):configuration(dict(self.env(),PORT=port))
+
+    def test_public_demo_has_no_password_challenge(self):
+        env=self.env();env.pop('CALIBRATED_PASSWORD')
+        config=configuration(dict(env,CALIBRATED_PUBLIC_DEMO='1',CALIBRATED_DEMO='1'))
+        self.assertTrue(config['public_demo'])
+        self.assertNotIn('basic_auth',gateway_config(config))
+        self.assertIn('Invalid host',gateway_config(config))
+
+    def test_public_access_cannot_disable_private_workspace_authentication(self):
+        with self.assertRaises(ValueError):configuration(dict(self.env(),CALIBRATED_PUBLIC_DEMO='1'))
+        with self.assertRaises(ValueError):
+            env=self.env();env.pop('CALIBRATED_PASSWORD');configuration(env)

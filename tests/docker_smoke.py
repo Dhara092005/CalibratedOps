@@ -43,10 +43,11 @@ def main():
             time.sleep(.5)
         raise AssertionError('Container did not become healthy')
     docker('volume','create',volume)
-    def launch(persistent):
+    def launch(persistent,public=False):
         mount=['--mount',f'type=volume,source={volume},target=/var/data'] if persistent else []
+        access=['-e','CALIBRATED_PUBLIC_DEMO=1'] if public else ['-e','CALIBRATED_PASSWORD']
         docker('run','-d','--name',name,'-p',f'127.0.0.1:{port}:10000',*mount,
-               '-e','CALIBRATED_PASSWORD','-e','CALIBRATED_LOCAL_TEST=1','-e','CALIBRATED_DEMO=1',
+               *access,'-e','CALIBRATED_LOCAL_TEST=1','-e','CALIBRATED_DEMO=1',
                '-e',f'CALIBRATED_PUBLIC_ORIGIN={origin}','calibratedops:deploy-test',env=env)
     try:
         launch(True)
@@ -76,12 +77,20 @@ def main():
         assert len(state['datasets'])==3,'Restart duplicated bundled datasets'
         assert request('/api/export')[0]==401
         docker('rm','-f',name)
-        launch(False);healthy()
-        status,body=request('/api/state',headers={'Authorization':auth})
+        launch(False,public=True);healthy()
+        status,body=request('/api/state')
         fresh=json.loads(body)
         assert status==200 and fresh['ephemeral_demo'] is True
         assert len(fresh['datasets'])==3 and not fresh['incidents']
-        print('Container checks passed: authentication, host/origin checks, writes, public cases, optional volume persistence, and a clean reset on a fresh ephemeral demo container.')
+        assert request('/')[0]==200
+        assert request('/app.js')[0]==200
+        assert request('/api/export')[0]==200
+        headers={'X-Review-Token':fresh['token'],'Origin':'https://attacker.invalid'}
+        assert request('/api/incidents',payload,headers)[0]==403
+        headers['Origin']=origin
+        assert request('/api/incidents',payload,headers)[0]==201
+        assert fresh['ai_configured'] is False
+        print('Container checks passed: private authentication, public password-free demo, host/origin checks, writes, seeded cases, volume persistence and ephemeral reset.')
     finally:
         subprocess.run(['docker','rm','-f',name],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         subprocess.run(['docker','volume','rm',volume],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
