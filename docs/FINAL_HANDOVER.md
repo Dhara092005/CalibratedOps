@@ -20,7 +20,7 @@ Infrastructure actions are simulated. Live OpenAI calls need explicit authorizat
 
 ## Verification
 
-Version 1.13 includes 144 regression tests, including readiness counts, prepared-versus-completed trials, latest reference decisions, two-assessor coverage, outcome masking, endpoint checks, and a check that historical account tables cannot reactivate a login screen. The latest run is recorded in `runs/latest-test-results.txt`. All ten JavaScript files passed syntax checks, and Python compilation passed. The application is local and single-user; account and shared-hosting features have been removed.
+Version 1.14 includes 149 regression tests, including readiness counts, prepared-versus-completed trials, latest reference decisions, two-assessor coverage, outcome masking, endpoint checks, and a check that historical account tables cannot reactivate a login screen. The latest run is recorded in `runs/latest-test-results.txt`. All ten JavaScript files passed syntax checks, and Python compilation passed. The application is local and single-user; account and shared-hosting features have been removed.
 
 Open **Research readiness** for current progress and task shortcuts. Its JSON export contains progress counts, not participant responses. R01/R02 scoring coverage is counted only after study closure; identities and independence remain self-declared. Separate public datasets contribute to inventory counts but are never treated as a pooled eligible calibration cohort. The report card links to the existing results workflow; it does not mark a final report complete.
 
@@ -49,3 +49,7 @@ Regenerate reports after collecting observations with `python scripts/research_r
 - `docs/DEFENSE_OUTLINE.md`: presentation structure.
 
 The database backup contains your local records and is separate from the source package. Keep it for restoring your own workspace. Report snapshots reflect saved data at the handover time; regenerate them as work continues.
+
+## Hosted deployment
+
+The Docker image and Render Blueprint add a password-protected gateway, persistent SQLite storage, health checks, exact public-origin validation, and idempotent public-case seeding. The isolated Docker smoke test passed authentication, host/origin checks, writes, and restart persistence. See DEPLOYMENT.md. Cloud publication still requires creating the Render resources; preparing and testing the container does not mean the hosted service is live. Local participant records are not migrated.

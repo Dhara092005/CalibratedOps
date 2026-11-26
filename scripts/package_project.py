@@ -5,7 +5,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 root = Path(__file__).resolve().parents[1]
 destination = root / "runs" / "CalibratedOps-project.zip"
 destination.parent.mkdir(parents=True, exist_ok=True)
-included = ("README.md", "pyproject.toml", "start.cmd", ".gitignore", ".github", "calibrated_ops", "docs", "tests", "scripts")
+included = ("README.md", "pyproject.toml", "start.cmd", ".gitignore", ".dockerignore", "Dockerfile", "render.yaml", ".github", "calibrated_ops", "docs", "tests", "scripts")
 count = 0
 with ZipFile(destination, "w", ZIP_DEFLATED) as archive:
     for name in included:

@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!calibrated_ops/
+!calibrated_ops/**
+!scripts/
+!scripts/**
+**/__pycache__/
+**/*.pyc
+**/.env*
+**/*.sqlite3*

@@ -51,6 +51,11 @@ class HttpTests(unittest.TestCase):
         self.assertEqual(self.request('/api/research-readiness-export')[0],200)
         self.assertEqual(self.request('/readiness.js')[0],200)
 
+    def test_health_reports_no_workspace_records(self):
+        status,body=self.request('/healthz')
+        self.assertEqual(status,200)
+        self.assertEqual(body,dict(status='ok'))
+
     def test_local_assets_and_path_allowlist(self):
         self.assertEqual(self.request("/")[0], 200)
         self.assertEqual(self.request("/app.js")[0], 200)

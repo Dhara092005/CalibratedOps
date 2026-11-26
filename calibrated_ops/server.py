@@ -40,7 +40,7 @@ def string(data, key, default="", maximum=4000, required=False):
     return value.strip()
 
 
-def make_server(port=8767, database="runs/calibrated_ops.sqlite3"):
+def make_server(port=8767, database="runs/calibrated_ops.sqlite3", public_origin=None):
     store = Store(database)
     predictions = PredictionRuns(store)
     plan_jobs = PlanJobs(store)
@@ -99,6 +99,12 @@ def make_server(port=8767, database="runs/calibrated_ops.sqlite3"):
             if not self.valid_host():
                 return self.send(403, dict(error="Use the local application address."))
             path = urlsplit(self.path).path
+            if path == '/healthz':
+                try:
+                    with store.connect() as db:db.execute('SELECT 1').fetchone()
+                    return self.send(200,dict(status='ok'))
+                except sqlite3.Error:
+                    return self.send(503,dict(status='unavailable'))
             if path == "/api/state":
                 return self.send(200, self.state())
             if path in ('/api/research-readiness', '/api/research-readiness-export'):
@@ -172,6 +178,8 @@ def make_server(port=8767, database="runs/calibrated_ops.sqlite3"):
             if not self.valid_host():
                 return self.reject_write("Use the local application address.")
             allowed_origins = (f"http://127.0.0.1:{self.server.server_port}", f"http://localhost:{self.server.server_port}")
+            if public_origin:
+                allowed_origins = (public_origin,)
             supplied = self.headers.get("X-Review-Token", "")
             if self.headers.get("Origin") not in allowed_origins or not secrets.compare_digest(supplied, token):
                 return self.reject_write("The local session expired or the request origin was invalid. Reload the app.")

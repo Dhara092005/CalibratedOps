@@ -25,3 +25,12 @@ jobs:
       - run: node --check calibrated_ops/static/research.js
       - run: node --check calibrated_ops/static/readiness.js
       - run: node --check calibrated_ops/static/understanding.js
+  deployment-container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: docker build -t calibratedops:deploy-test .
+      - run: python tests/docker_smoke.py

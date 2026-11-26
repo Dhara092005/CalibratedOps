@@ -4,7 +4,7 @@
 
 CalibratedOps helps people inspect agent proposals, challenge uncertain recommendations, and record recovery decisions. It combines source-backed incident datasets, confidence calibration, multi-step plan review, and supervised research workflows in a single-user web application.
 
-**Project status:** the software features are implemented. Empirical research evaluation remains incomplete: reference adjudication, genuine participant sessions, independent understanding scores, and sufficient calibration evidence are still required. The last verified regression run passed **144 tests**.
+**Project status:** the software features are implemented. Empirical research evaluation remains incomplete: reference adjudication, genuine participant sessions, independent understanding scores, and sufficient calibration evidence are still required. The last verified regression run passed **149 tests**.
 
 All infrastructure actions are simulated. This independent project was inspired by the [Ericsson thesis topic](https://jobs.ericsson.com/careers/job/563121777275159-thesis-human-in-the-loop-calibrated-agent-harness-karlskrona-blekinge-sweden); it is not affiliated with Ericsson.
 
@@ -28,7 +28,11 @@ To use a different port or a separate workspace:
 python -m calibrated_ops serve --port 8770 --database runs/another-study.sqlite3
 ```
 
-The server binds to `127.0.0.1`. It supports local, single-user operation and supervised participant sessions, one person at a time. It has no separate participant accounts and is not configured for public hosting.
+The local server binds to `127.0.0.1`. It supports single-user operation and supervised participant sessions, one person at a time. It has no separate participant accounts.
+
+## Full app hosting
+
+The repository includes a Docker image and Render Blueprint for the complete application, with a password-protected gateway and persistent SQLite storage. This remains one single-user workspace. The hosted workspace seeds the bundled public incidents; your local reviews and participant records are not uploaded. Render's service and persistent disk require a paid plan. Follow the [deployment guide](docs/DEPLOYMENT.md) before creating hosting resources.
 
 ## Features
 
